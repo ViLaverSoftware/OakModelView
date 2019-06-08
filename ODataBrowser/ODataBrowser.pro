@@ -22,6 +22,7 @@ INCLUDEPATH += \
     ../Lib \
     ../Lib/OakXML \
     ../Lib/OakModel \
+    ../Lib/QtOakModel \
     ../Lib/QtWidgetOakView
 
 include(NodeDef.pri)
@@ -43,10 +44,12 @@ CONFIG(debug, debug|release) {
     win32:POST_TARGETDEPS = \
         ../Lib/OakXMLd.lib \
         ../Lib/OakModeld.lib \
+        ../Lib/QtOakModeld.lib \
         ../Lib/QtWidgetOakViewd.lib
     win32:LIBS = \
         ../Lib/OakXMLd.lib \
         ../Lib/OakModeld.lib \
+        ../Lib/QtOakModeld.lib \
         ../Lib/QtWidgetOakViewd.lib
     OBJECTS_DIR = ./debug
 
@@ -55,10 +58,12 @@ CONFIG(debug, debug|release) {
     win32:POST_TARGETDEPS = \
         ../Lib/OakXML.lib \
         ../Lib/OakModel.lib \
+        ../Lib/QtOakModel.lib \
         ../Lib/QtWidgetOakView.lib
     win32:LIBS = \
         ../Lib/OakXML.lib \
         ../Lib/OakModel.lib \
+        ../Lib/QtOakModel.lib \
         ../Lib/QtWidgetOakView.lib
     OBJECTS_DIR = ./release
 }

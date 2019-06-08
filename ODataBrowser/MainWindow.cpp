@@ -42,8 +42,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->OakView->setColumnCount(2);
     ui->OakView->setHeaderLabels(QStringList() << "Type" << "Name");
 
+    m_oakModel2 = new QOakModel(this);
+    m_oakModel = m_oakModel2->oakModel();
+    //m_oakModel = new OakModel();
 
-    m_oakModel = new OakModel();
+    ui->treeView->setModel(m_oakModel2);
 
     ui->NodeDataView->setModel(m_oakModel);
     ui->OakView->setOakModel(m_oakModel);
@@ -97,7 +100,7 @@ void MainWindow::on_actionLoad_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Load From Archive", QString::fromStdString(m_oakModel->docFilePathXML()));
     if (filePath.isEmpty()) { return; }
-    if (m_oakModel->loadRootNodeXML(filePath.toStdString())) {
+    if (m_oakModel2->loadModel(filePath)) {
         ui->OakView->expandAll();
         setWindowTitle("OData Browser - " + filePath);
         ui->OakView->resizeColumnToContents(0);

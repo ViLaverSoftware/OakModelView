@@ -21,6 +21,7 @@
 #include <QMainWindow>
 #include <QDir>
 
+#include "QOakModel.h"
 #include "OakModel.h"
 #include "NodeDef.h"
 
@@ -61,4 +62,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     OakModel* m_oakModel;
+    QOakModel* m_oakModel2;
+
 };

@@ -16,6 +16,16 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
+     <widget class="QTreeView" name="treeView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -66,7 +76,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>607</width>
+             <width>156</width>
              <height>787</height>
             </rect>
            </property>
@@ -78,8 +88,6 @@
      </widget>
     </item>
    </layout>
-   <zorder>splitter</zorder>
-   <zorder>scrollArea</zorder>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
