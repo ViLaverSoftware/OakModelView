@@ -30,6 +30,8 @@ QOakModel::QOakModel(QObject *parent)
     : QAbstractItemModel(parent)
 {
     //TRACE("Constructor: QuickOakModel");
+    m_model.notifier_rootNodeDataChanged.add(this, &QOakModel::onRootNodeDataChanged);
+
     m_model.notifier_keyLeafChangeAfter.add(this, &QOakModel::onKeyLeafChanged);
     m_model.notifier_variantLeafChangeAfter.add(this, &QOakModel::onVariantLeafChanged);
     m_model.notifier_nodeInserteBefore.add(this,&QOakModel::onNodeInserteBefore);
@@ -104,12 +106,12 @@ bool QOakModel::loadModel(const QString &filePath)
     }
     beginResetModel();
     if (m_model.loadRootNodeXML(path.toStdString())) {
-        emit dataLoaded();
-        updateEnabledActions();
-        if (!m_model.isNull()) {
-            this->resetInternalData();
-        }
-        endResetModel();
+
+//        updateEnabledActions();
+//        if (!m_model.isNull()) {
+//            this->resetInternalData();
+//        }
+//        endResetModel();
 
 //        TRACE("Column Count: %i", columnCount(QModelIndex()));
 //        TRACE("Row Count: %i", rowCount(QModelIndex()));
@@ -167,6 +169,18 @@ void QOakModel::updateEnabledActions()
     set_loadActionEnabled(!m_model.isDefNull());
     set_saveActionEnabled(!m_model.isNull() && !m_model.docFilePathXML().empty());
     set_saveAsActionEnabled(!m_model.isNull());
+}
+
+// =============================================================================
+// (private)
+void QOakModel::onRootNodeDataChanged()
+{
+    emit dataLoaded();
+    updateEnabledActions();
+    if (!m_model.isNull()) {
+        this->resetInternalData();
+    }
+    endResetModel();
 }
 
 // =============================================================================

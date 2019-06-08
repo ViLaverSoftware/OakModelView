@@ -70,6 +70,8 @@ protected:
     void setBuilder(QOakModelBuilderData* rootNodeDef);
     void updateEnabledActions();
 
+    void onRootNodeDataChanged();
+
     void onVariantLeafChanged(const Oak::Model::NodeIndex& nIndex);
     void onKeyLeafChanged(const Oak::Model::NodeIndex& nIndex);
     void onNodeInserteBefore(const Oak::Model::NodeIndex& nIndex);
